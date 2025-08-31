@@ -1,0 +1,1 @@
+docker buildx build --platform linux/amd64,linux/arm64/v8 -t whydoineedanaccount2/dawarich_buffer:v1.0.0 --push .

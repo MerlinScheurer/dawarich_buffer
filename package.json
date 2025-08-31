@@ -1,0 +1,22 @@
+{
+  "name": "dawarich_buffer",
+  "module": "index.ts",
+  "type": "module",
+  "version": "v1.0.0",
+  "author": {
+    "name": "Merlin Scheurer"
+  },
+  "license": "GPL-3.0-only",
+  "private": true,
+  "scripts": {
+    "dev": "bun run --watch index.ts",
+    "start": "bun run index.ts",
+    "build": "bun build ./index.ts --outdir ./build --target bun"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

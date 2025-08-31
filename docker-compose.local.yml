@@ -1,0 +1,10 @@
+services:
+  dawarich_buffer:
+    container_name: dawarich_buffer
+    restart: unless-stopped
+    build: .
+    ports:
+      - 3000:3000
+    environment:
+      - POINTS_CACHE="./cache/points_cache.json"
+      - DAWARICH_URL=http://localhost:3001

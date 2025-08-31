@@ -1,0 +1,10 @@
+services:
+  dawarich_buffer:
+    container_name: dawarich_buffer
+    image: whydoineedanaccount2/dawarich_buffer:v1.0.0
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    environment:
+      - POINTS_CACHE="./cache/points_cache.json"
+      - DAWARICH_URL=<YourDaWarIchUrl>
