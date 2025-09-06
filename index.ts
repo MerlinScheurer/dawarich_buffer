@@ -230,7 +230,7 @@ const server = Bun.serve({
         return Response.json(await response.json());
       }
 
-      return new Response("OK");
+      return Response.json({ status: "OK" });
     },
 
     "/api/v1/points": async (req) => {
