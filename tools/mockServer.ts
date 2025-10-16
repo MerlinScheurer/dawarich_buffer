@@ -8,7 +8,35 @@ const server = Bun.serve({
 
     "/api/v1/stats": async (req) => {
       console.log(req.url, await req.body?.json());
-      return Response.json({});
+      return Response.json({
+        totalDistanceKm: 0,
+        totalPointsTracked: 0,
+        totalReverseGeocodedPoints: 0,
+        totalCountriesVisited: 0,
+        totalCitiesVisited: 0,
+        yearlyStats: [
+          {
+            year: 0,
+            totalDistanceKm: 0,
+            totalCountriesVisited: 0,
+            totalCitiesVisited: 0,
+            monthlyDistanceKm: {
+              january: 0,
+              february: 0,
+              march: 0,
+              april: 0,
+              may: 0,
+              june: 0,
+              july: 0,
+              august: 0,
+              september: 0,
+              october: 0,
+              november: 0,
+              december: 0,
+            },
+          },
+        ],
+      });
     },
 
     "/api/v1/points": async (req) => {

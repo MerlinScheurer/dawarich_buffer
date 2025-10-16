@@ -230,7 +230,14 @@ const server = Bun.serve({
         return Response.json(await response.json());
       }
 
-      return Response.json({ status: "OK" });
+      return Response.json({
+        totalDistanceKm: 0,
+        totalPointsTracked: 0,
+        totalReverseGeocodedPoints: 0,
+        totalCountriesVisited: 0,
+        totalCitiesVisited: 0,
+        yearlyStats: [],
+      });
     },
 
     "/api/v1/points": async (req) => {
