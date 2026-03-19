@@ -91,7 +91,7 @@ const cacheRequest = async (pointsCacheParsed: RequestCached[]) => {
 
 const forwardRequests = async (pointsCacheParsed: RequestCached[]) => {
   console.log(
-    `${getTimestamp()}: Forwarding ${pointsCacheParsed.length} requests.`
+    `${getTimestamp()}: Forwarding ${pointsCacheParsed.length} requests.`,
   );
 
   let pointsNotSend = [...pointsCacheParsed];
@@ -122,7 +122,7 @@ const forwardRequests = async (pointsCacheParsed: RequestCached[]) => {
     if (response.status !== 200) {
       console.log(
         `${getTimestamp()}: Something went wrong, trying to exit!`,
-        response.status
+        response.status,
       );
       break;
     }
@@ -132,6 +132,7 @@ const forwardRequests = async (pointsCacheParsed: RequestCached[]) => {
     }
 
     iterations++;
+    await Bun.sleep(250);
   }
 
   if (pointsNotSend.length !== pointsCacheParsed.length) {
@@ -212,7 +213,7 @@ const server = Bun.serve({
             `${getTimestamp()}: Unauthorized`,
             response.status,
             apiKey,
-            req.url
+            req.url,
           );
 
           return new Response("Unauthorized!", { status: 401 });
@@ -221,7 +222,7 @@ const server = Bun.serve({
         if (response.status !== 200) {
           console.log(
             `${getTimestamp()}: Something went wrong, trying to exit!`,
-            response.status
+            response.status,
           );
 
           return new Response("Internal Server Error", { status: 500 });
@@ -266,5 +267,5 @@ const server = Bun.serve({
 });
 
 console.log(
-  `${getTimestamp()}: Listening on http://localhost:${server.port} ...`
+  `${getTimestamp()}: Listening on http://localhost:${server.port} ...`,
 );
