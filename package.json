@@ -2,7 +2,7 @@
   "name": "dawarich_buffer",
   "module": "index.ts",
   "type": "module",
-  "version": "v1.0.0",
+  "version": "v1.0.1",
   "author": {
     "name": "Merlin Scheurer"
   },
