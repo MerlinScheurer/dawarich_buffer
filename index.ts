@@ -97,6 +97,7 @@ const forwardRequests = async (pointsCacheParsed: RequestCached[]) => {
   let pointsNotSend = [...pointsCacheParsed];
 
   let iterations = 0;
+  let aborted = false;
 
   for (const point of pointsCacheParsed) {
     const { apiKey, type, body } = point;
@@ -120,6 +121,7 @@ const forwardRequests = async (pointsCacheParsed: RequestCached[]) => {
     });
 
     if (response.status !== 200) {
+      aborted = true;
       console.log(
         `${getTimestamp()}: Something went wrong, trying to exit!`,
         response.status,
@@ -135,7 +137,7 @@ const forwardRequests = async (pointsCacheParsed: RequestCached[]) => {
     await Bun.sleep(250);
   }
 
-  if (pointsNotSend.length !== pointsCacheParsed.length) {
+  if (aborted || pointsNotSend.length !== pointsCacheParsed.length) {
     await cacheRequest(pointsNotSend);
   }
 
