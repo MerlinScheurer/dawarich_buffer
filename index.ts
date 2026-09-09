@@ -188,8 +188,6 @@ const server = Bun.serve({
       return Response.json({
         status: "ok",
       });
-
-      return new Response("Internal Server Error", { status: 500 });
     },
 
     "/api/v1/stats": async (req) => {
@@ -207,6 +205,7 @@ const server = Bun.serve({
             Authorization: `Bearer ${apiKey}`,
             "Content-type": "application/json; charset=UTF-8",
           },
+          // oxlint-disable-next-line unicorn/no-invalid-fetch-options
           body: JSON.stringify(body),
         });
 
